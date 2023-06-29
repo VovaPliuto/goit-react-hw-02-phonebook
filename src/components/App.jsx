@@ -12,13 +12,17 @@ export class App extends Component {
   };
 
   onAddContact = newContact => {
-    this.setState({ contacts: [...this.state.contacts, newContact] });
+    if (this.state.contacts.find(el => el.name === newContact.name)) { 
+      return alert(`${newContact.name} is already in contacts`); 
+    }
+
+    this.setState(state => ({ contacts: [...state.contacts, newContact] }));
   };
 
   onContactDelete = contactId => {
-    this.setState({
-      contacts: this.state.contacts.filter(contact => contact.id !== contactId),
-    });
+    this.setState(state => ({
+      contacts: state.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   handleFilterChange = e => {
@@ -31,7 +35,6 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm
           onAddContact={this.onAddContact}
-          contacts={this.state.contacts}
         />
 
         <h2>Contacts</h2>

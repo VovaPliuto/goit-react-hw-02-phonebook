@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
 export const ContactList = ({ data, onContactDelete }) => {
+  
   const createContactsMarkup = obj => {
     return (
       <li key={obj.id} className={css.listItem}>
@@ -33,6 +34,7 @@ export const ContactList = ({ data, onContactDelete }) => {
       </ul>
     );
   }
+
   return (
     <ul className={css.contactsList}>
       {data.contacts.map(el => {

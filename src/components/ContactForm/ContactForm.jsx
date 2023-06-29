@@ -24,16 +24,8 @@ export class ContactForm extends Component {
       number: this.state.number,
     };
 
-    this.contactNameCheck(newName);
-
     this.props.onAddContact(newName);
     this.setState({ name: '', number: '' });
-  };
-
-  contactNameCheck = nameToCheck => {
-    if (this.props.contacts.find(el => el.name === nameToCheck.name)) {
-      alert(`${nameToCheck.name} is already in contacts`);
-    }
   };
 
   render() {
@@ -74,5 +66,5 @@ export class ContactForm extends Component {
 
 ContactForm.propTypes = {
   onAddContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
+
 }
